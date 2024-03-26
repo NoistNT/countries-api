@@ -60,10 +60,15 @@ export interface ICountry {
 
 export interface ICountrySimple {
   name: string;
-  altSpellings: string[];
   flags: string[];
   languages: { [languageCode: string]: string };
   region: string;
   subregion: string;
   capital: string[];
+}
+
+export interface Query {
+  region?: { $regex: string; $options: 'i' };
+  subregion?: { $regex: string; $options: 'i' };
+  capital?: { $regex: string; $options: 'i' };
 }
