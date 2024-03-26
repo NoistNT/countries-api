@@ -1,13 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Seeder } from '../schemas/seeder.schema';
-import { Country } from 'types';
+import { Country } from '../schemas/country.schema';
 
 @Injectable()
 export class SeederService {
   constructor(
-    @InjectModel('Seeder') private readonly seederModel: Model<Seeder>,
+    @InjectModel(Country.name) private readonly countryModel: Model<Country>,
   ) {}
 
   async seed(): Promise<{
@@ -20,8 +19,8 @@ export class SeederService {
     const countries: Country[] = require(SEED_URL as string);
 
     try {
-      await this.seederModel.deleteMany({});
-      await this.seederModel.insertMany(countries);
+      await this.countryModel.deleteMany({});
+      await this.countryModel.insertMany(countries);
       return {
         status: 201,
         message: 'Countries seeded successfully.',
