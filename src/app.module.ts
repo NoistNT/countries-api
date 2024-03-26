@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { SeederModule } from './seeder/seeder.module';
+import { CountryModule } from './country/country.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { SeederModule } from './seeder/seeder.module';
       inject: [ConfigService],
     }),
     SeederModule,
+    CountryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
