@@ -1,20 +1,15 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { IsObject, IsString, IsUrl } from 'class-validator';
-import mongoose from 'mongoose';
 
 @Schema()
 export class CountrySimple {
   @Prop()
+  @IsString()
+  _id!: string;
+
+  @Prop({ type: Object })
   @IsObject()
-  _id!: mongoose.Types.ObjectId;
-
-  @Prop()
-  @IsString()
-  name!: string;
-
-  @Prop()
-  @IsString()
-  officialName!: string;
+  name!: { common: string; official: string };
 
   @Prop()
   @IsUrl()
