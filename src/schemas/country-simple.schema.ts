@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { IsObject, IsString, IsUrl } from 'class-validator';
+import { IsNumber, IsObject, IsString, IsUrl } from 'class-validator';
 
 @Schema()
 export class CountrySimple {
@@ -25,8 +25,8 @@ export class CountrySimple {
   region!: string;
 
   @Prop()
-  @IsString()
-  subregion!: string;
+  @IsNumber()
+  population!: number;
 
   @Prop()
   @IsString()
