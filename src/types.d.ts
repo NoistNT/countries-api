@@ -69,6 +69,6 @@ export interface ICountrySimple {
 
 export interface Query {
   region?: { $regex: string; $options: 'i' };
-  subregion?: { $regex: string; $options: 'i' };
   capital?: { $regex: string; $options: 'i' };
+  population?: { $regex: number; $options: 'i' };
 }
